@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+
+import { Aluno } from './aluno';
+import { AlunoService } from './aluno.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ta-gui';
+   aluno: Aluno = {nome: "test", cpf: "", email: ""};
+   alunoService = new AlunoService();
+   
+   gravar(a: Aluno): void {
+     this.alunoService.gravar(a);
+     this.aluno = {nome: "", cpf: "", email: ""};
+   }
 }
